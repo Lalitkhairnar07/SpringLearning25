@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Home.jsp"> Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Home.jsp">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="newlaptop">AddLaptop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listlaptop">LaptopList</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="addtv">AddTv</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listtv">ListTV</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mt-5 text-center">
+        <h1 class="mb-3">Welcome to Store</h1>
+        <p class="lead">Manage your Product easily. Add, view, and manage Product in one place.</p>
+
+        
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
