@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.bean.LaptopBean;
+import com.dao.LaptopDao;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -22,6 +24,9 @@ public class LaptopController {
 	
 	@Autowired
 	JdbcTemplate stmt;
+	
+	@Autowired
+	LaptopDao laptopDao;
 	
 	@GetMapping("/home")
 	public String Home() {
@@ -39,9 +44,7 @@ public class LaptopController {
 		
 		//db insert 
 		
-		String insertQurrey = "INSERT INTO laptop(modelName, ram, ssd, price) VALUES(?,?,?,?) ";
-		stmt.update(insertQurrey, laptopBean.getModelName(), laptopBean.getRam(), laptopBean.getSsd(), laptopBean.getPrice());
-		
+		laptopDao.addLaptop(laptopBean);
 		return "Home";
 	}
 	

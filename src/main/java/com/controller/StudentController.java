@@ -1,9 +1,18 @@
 package com.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.bean.StudentBean;
+import com.dao.StudentDao;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -12,71 +21,68 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 public class StudentController {
 
-    private final SessionController sessionController;
+	@Autowired
+	StudentDao studentDao;
+	
+	@GetMapping("/newstudent")
+	public String addStudent() {
+		
+		return "AddStudent";
+	}
 
-    StudentController(SessionController sessionController) {
-        this.sessionController = sessionController;
-    }
-
-	@GetMapping("/studentform")
-	public String StudentForm() {
-		return "StudentForm";
+	@PostMapping("/savestudent")
+	public String saveStudent(@Validated StudentBean studentBean, BindingResult result, Model model) {
+		
+		if (result.hasErrors()) {
+			
+			model.addAttribute("result", result);
+//			${result.getFieldError("productName").getDefaultMessage()}
+			
+			return "AddStudent";
+		
+		}else {
+			
+			studentDao.addStudent(studentBean);
+			
+			return "AddStudent";
+		}
+		
 	}
 	
-	@PostMapping("/studentdata")
-	public String postMethodName(String studentName, String studentEmail, String studentPhone, String gender, String studentCity, String studentAddress, Model model) {
+	@GetMapping("/liststudent")
+	public String listStudent(Model model) {
 		
-		System.out.println(studentName);
+		List<StudentBean> students = studentDao.listStudent();
+		model.addAttribute("students", students);
 		
-		model.addAttribute("studentName",studentName);
-		model.addAttribute("studentEmail",studentEmail);
-		model.addAttribute("studentPhone",studentPhone);
-		model.addAttribute("gender",gender);
-		model.addAttribute("studentCity",studentCity);
-		model.addAttribute("studentAddress",studentAddress);
-		
-		//validation
-		
-		boolean isError = false;
-		
-		if(studentName == null || studentName.isBlank()) {
-			isError = true;
-			model.addAttribute("nameError", "Enter your Name");
-		}
-		
-		if(studentEmail == null || studentEmail.isBlank()) {
-			isError = true;
-			model.addAttribute("emailError", "Enter your Email");
-		}
-		
-		if(studentPhone == null || studentPhone.isBlank()) {
-			isError = true;
-			model.addAttribute("phoneError", "Enter Phone Number");
-		}
-		
-		if(gender == null || gender.isBlank()) {
-			isError = true;
-			model.addAttribute("genderError", "Select your Gender");
-		}
-		
-		if(studentCity == null || studentCity.isBlank()) {
-			isError = true;
-			model.addAttribute("cityError", "Select City");
-		}
-		
-		if(studentAddress == null || studentAddress.isBlank()) {
-			isError = true;
-			model.addAttribute("addressError", "Enter Student Address");
-		}
-		
-		if(isError == true) {
-			return "StudentForm";
-		}
-		
-		else {
-			return "StudentDetails" ;
-		}
-			
+		return "StudentList";
 	}
+	
+	
+	@GetMapping("/deletestudent")
+	public String deleteStdudent(Integer studentId) {
+		
+		studentDao.deleteStudent(studentId); 
+		System.out.println("Delete successfully");
+		return "redirect:/liststudent";
+	}
+	
+	@GetMapping("/editstudent")
+	public String editStudent(Integer studentId, Model model) {
+		
+		StudentBean x = studentDao.editStdudent(studentId);
+		model.addAttribute("x", x);
+		return "EditStudent";
+	}
+	
+	@PostMapping("/updatestudent")
+	public String updateStudent(StudentBean studentBean) {
+		
+		studentDao.updateStudent(studentBean);
+		
+		return "redirect:/liststudent";
+	}
+	
+	
 	
 }

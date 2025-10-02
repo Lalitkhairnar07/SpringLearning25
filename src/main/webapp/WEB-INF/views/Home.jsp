@@ -22,7 +22,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="Home.jsp">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="newlaptop">AddLaptop</a>
                     </li>
                     <li class="nav-item">
@@ -33,6 +33,20 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="listtv">ListTV</a>
+                    </li> -->
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="newstudent">AddStudent</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="liststudent">ListStudent</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="addfood">AddFood</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listfood">ListFood</a>
                     </li>
                 </ul>
             </div>
