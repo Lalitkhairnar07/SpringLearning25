@@ -63,7 +63,7 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-lg p-4" style="width: 400px;">
         <h2 class="text-center mb-4 fw-bold">Welcome Back</h2>
-        <form action="LoginServlet" method="post">
+        <form action="authenticate" method="post">
             
             <div class="mb-3 input-group">
                 <span class="input-group-text"><i class="bi bi-person-fill"></i></span>

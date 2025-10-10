@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bean.UserBean;
 import com.dao.UserDao;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class UserController {
@@ -100,5 +102,33 @@ public class UserController {
 			return "Login";
 		}
 		
+	}
+	
+//	@PostMapping("/authenticate")
+//	public String authenticate(@RequestBody String email, String password) {
+//		
+//		UserBean userBean = 
+//		
+//		
+//		return "Login";
+//	}
+	
+	
+	@PostMapping("authenticate")
+	public String authenticate(String email, String password) {
+		// password=>tejas
+
+		// select * from users where email = ?
+
+		UserBean user = userDao.getUserByEmail(email);
+		if(user == null) {
+			return "Login";
+		}
+		boolean status = enocder.matches(password, user.getPassword());
+		if (status == true) {
+			return "Home";
+		} else {
+			return "Login";
+		}
 	}
 }
