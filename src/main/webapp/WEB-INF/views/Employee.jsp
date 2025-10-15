@@ -71,7 +71,7 @@
         <input type="password" name="password" id="password" required>
 
         <label for="profilePic">Profile Picture:</label>
-        <input type="file" name="profilePic" id="profilePic" accept="image/*" required>
+        <input type="file" name="profilePic" id="profilePic" accept="image/*" >
 
         <input type="submit" value="Add Employee">
     </form>
