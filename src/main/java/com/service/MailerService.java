@@ -29,6 +29,21 @@ public class MailerService {
 		
 		String otp = String.format("%06d", new Random().nextInt(999999));
 		
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom("sarkarofcoder0808@gmail.com");
+		message.setTo(email);
+		message.setSubject("Your Password Reset OTP");
+		message.setText("Dear user,\\n\\nYour OTP for password reset is: " + otp +
+				"\n\nThis OTP is valid for 10 minutes.\n\nIf you did not request this, please ignore.\n\nThank you!");
+		
+		
+		//send mail
+		mailSender.send(message);
+		System.out.println("✅ OTP " + otp + 
+				"sent successfully to" + email);
+		
+		 // Return OTP (so controller can validate it later)
+		return otp;
 	}
 	
 }

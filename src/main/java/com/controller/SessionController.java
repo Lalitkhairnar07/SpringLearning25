@@ -17,14 +17,14 @@ public class SessionController {
 		return "Signup";
 	}
 	
-	@GetMapping("signin")
-	public String openLogin() {
-		return "Login";
-	}
+//	@GetMapping("signin")
+//	public String openLogin() {
+//		return "Login";
+//	}
 	
-	@GetMapping("/forgotpassword")
-	public String openForgotPass() {
-		return "ForgotPassword";
-	}
+//	@GetMapping("/forgotpassword")
+//	public String openForgotPass() {
+//		return "ForgotPassword";
+//	}
 	
 }

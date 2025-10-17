@@ -30,4 +30,9 @@ public class EmployeeDao {
 		return employeeList;
 	}
 	
+	public void updatePasswordByEmail(String email, String newPassword) {
+		
+		stmt.update("UPDATE employees SET password = ? WHERE email = ?", newPassword, email);
+	}
+	
 }

@@ -79,7 +79,7 @@
         </form>
 
         <div class="links">
-            <a href="signup">Sign Up</a> | <a href="forgotpassword">Forgot Password?</a>
+            <a href="signup">Sign Up</a> | <a href="forgot-password">Forgot Password?</a>
         </div>
     </div>
 </div>
